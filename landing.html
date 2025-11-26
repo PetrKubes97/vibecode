@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar App | Join the Revolution</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+        :root {
+            --background-start: #0a0c10;
+            --background-end: #1d2b64;
+            --primary-text-color: #f0f2f5;
+            --secondary-text-color: #a9b3c1;
+            --accent-color: #8e44ad;
+            --accent-color-hover: #9b59b6;
+            --card-background: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, var(--background-end), var(--background-start));
+            background-attachment: fixed;
+            color: var(--primary-text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .header {
+            opacity: 0;
+            animation: fadeInDown 1s ease-in-out forwards;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            background: -webkit-linear-gradient(45deg, #ffffff, #c8c0f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subheader {
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            color: var(--secondary-text-color);
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out 0.5s forwards;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .screenshots {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 4vw, 3rem);
+            margin-bottom: 5rem;
+            flex-wrap: wrap;
+        }
+
+        .screenshot {
+            width: 250px;
+            height: auto;
+            background-color: var(--card-background);
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            overflow: hidden; /* Ensures the image respects the border-radius */
+        }
+        
+        .screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        .screenshot:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .screenshots .screenshot:nth-child(1) { animation-delay: 1s; }
+        .screenshots .screenshot:nth-child(2) { animation-delay: 1.2s; }
+        .screenshots .screenshot:nth-child(3) { animation-delay: 1.4s; }
+
+        .waitlist-form {
+            opacity: 0;
+            animation: fadeIn 0.2s ease-in-out 1.0s forwards;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        input[type="email"] {
+            padding: 1.25rem;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-background);
+            color: var(--primary-text-color);
+            width: 100%;
+            max-width: 380px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        input[type="email"]::placeholder {
+            color: var(--secondary-text-color);
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(142, 68, 173, 0.5);
+        }
+
+        .join-button {
+            padding: 1.25rem 2.8rem;
+            border-radius: 14px;
+            border: none;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);
+        }
+
+        .join-button:hover {
+            background-color: var(--accent-color-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(155, 89, 182, 0.6);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: translateY(50px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Make Money by VibeCoding Games</h1>
+            <p class="subheader">Vibe, play, earn. The first vibecoding app with profit sharing.</p>
+        </header>
+
+        <section class="waitlist">
+            <form class="waitlist-form">
+                <input type="email" placeholder="you@awesome.com" required>
+                <button type="submit" class="join-button">Join the Waitlist</button>
+            </form>
+        </section>
+
+        <section class="screenshots">
+            <div class="screenshot">
+                <img src="./screen_1.png" alt="App Screenshot 1">
+            </div>
+            <div class="screenshot">
+                <img src="./screen_2.png" alt="App Screenshot 2">
+            </div>
+            <div class="screenshot">
+                <img src="./screen_3.png" alt="App Screenshot 3">
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
